@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FamOS — Més temps i menys preocupacions per a la teva família</title>
+  <meta name="description" content="Una eina per a qualsevol tipus de família que vulgui organitzar-se millor, saber on van els diners i guanyar temps cada dia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-dark: #085041;
+      --green-mid: #0F6E56;
+      --green-light: #E1F5EE;
+      --amber-light: #FAEEDA;
+      --amber-dark: #854F0B;
+      --amber-darker: #633806;
+      --text-primary: #1a1a1a;
+      --text-secondary: #555;
+      --text-tertiary: #888;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f7f6f3;
+      --border: #e0ddd6;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--border);
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .logo { font-size: 1.1rem; font-weight: 500; color: var(--green-mid); }
+    .lang-toggle { display: flex; gap: 6px; }
+    .lang-btn {
+      font-size: 12px;
+      padding: 4px 12px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .lang-btn.active {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      border-color: #aaa;
+      font-weight: 500;
+    }
+
+    /* LAYOUT */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+    /* HERO */
+    .hero { text-align: center; padding: 4rem 2rem 3rem; max-width: 860px; margin: 0 auto; }
+    .badge {
+      display: inline-block;
+      background: var(--amber-light);
+      color: var(--amber-dark);
+      font-size: 12px;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 1.25rem;
+      font-weight: 500;
+    }
+    .hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 500;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      max-width: 580px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 span { color: var(--green-mid); }
+    .hero p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin: 0 auto 2rem;
+    }
+
+    /* FORM */
+    .form-row {
+      display: flex;
+      gap: 10px;
+      max-width: 420px;
+      margin: 0 auto 0.75rem;
+    }
+    .form-row input {
+      flex: 1;
+      padding: 11px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      outline: none;
+    }
+    .form-row input:focus { border-color: var(--green-mid); }
+    .btn-main {
+      background: var(--green-mid);
+      color: var(--green-light);
+      border: none;
+      padding: 11px 20px;
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: inherit;
+      transition: background 0.15s;
+    }
+    .btn-main:hover { background: var(--green-dark); }
+    .form-note { font-size: 12px; color: var(--text-tertiary); text-align: center; }
+
+    /* DIVIDER */
+    hr { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* PROBLEMS */
+    .section { padding: 3rem 2rem; max-width: 860px; margin: 0 auto; }
+    .section h2 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+    }
+    .problem-card {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+    }
+    .problem-card .icon { font-size: 1.5rem; margin-bottom: 10px; }
+    .problem-card h3 { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+    .problem-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.55; }
+
+    /* SOLUTION */
+    .solution-bg {
+      background: var(--bg-secondary);
+      padding: 3rem 2rem;
+    }
+    .solution-inner { max-width: 860px; margin: 0 auto; }
+    .solution-inner h2 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .solution-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .solution-item { display: flex; gap: 12px; align-items: flex-start; }
+    .dot {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      border-radius: 50%;
+      background: var(--green-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+    .solution-item h3 { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+    .solution-item p { font-size: 13px; color: var(--text-secondary); line-height: 1.55; }
+
+    /* SOCIAL PROOF */
+    .social { text-align: center; padding: 2.5rem 2rem; max-width: 860px; margin: 0 auto; }
+    .avatars { display: flex; justify-content: center; margin-bottom: 0.75rem; }
+    .avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 500;
+      border: 2px solid var(--bg-primary);
+      margin-left: -8px;
+    }
+    .avatar:first-child { margin-left: 0; }
+    .a1 { background: var(--amber-light); color: var(--amber-dark); }
+    .a2 { background: var(--green-light); color: var(--green-dark); }
+    .a3 { background: #EEEDFE; color: #3C3489; }
+    .a4 { background: #FBEAF0; color: #72243E; }
+    .social p { font-size: 13px; color: var(--text-tertiary); }
+
+    /* CTA BOTTOM */
+    .cta-bottom {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border);
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .cta-bottom h2 { font-size: 1.2rem; font-weight: 500; margin-bottom: 0.5rem; }
+    .cta-bottom p { font-size: 14px; color: var(--text-secondary); margin-bottom: 1.5rem; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 1.5rem 2rem;
+      font-size: 12px;
+      color: var(--text-tertiary);
+      border-top: 1px solid var(--border);
+    }
+
+    /* MOBILE */
+    @media (max-width: 540px) {
+      .form-row { flex-direction: column; }
+      .btn-main { width: 100%; }
+      nav { padding: 1rem; }
+    }
+
+    /* SUCCESS */
+    .success-msg {
+      display: none;
+      background: var(--green-light);
+      color: var(--green-dark);
+      border-radius: var(--radius-md);
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      max-width: 420px;
+      margin: 0.5rem auto 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">FamOS</div>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('ca')" id="btn-ca">Català</button>
+    <button class="lang-btn" onclick="setLang('es')" id="btn-es">Castellano</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge" id="badge">Aviat disponible</div>
+  <h1 id="h1">La teva família mereix <span>més temps i menys preocupacions</span></h1>
+  <p id="sub">Una eina per a qualsevol tipus de família que vulgui organitzar-se millor, saber on van els diners i guanyar temps cada dia.</p>
+  <div class="form-row">
+    <input type="email" id="email-1" placeholder="El teu email" />
+    <button class="btn-main" id="cta-1" onclick="handleSubmit('email-1','success-1')">Vull accés anticipat</button>
+  </div>
+  <div class="success-msg" id="success-1">✓ Apuntat! Et contactarem aviat.</div>
+  <p class="form-note" id="note-1">Sense spam. Accés gratuït al MVP per als primers 100.</p>
+</div>
+
+<hr />
+
+<!-- PROBLEMS -->
+<div class="section">
+  <h2 id="problems-title">Li passa a moltes famílies</h2>
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="icon">📅</div>
+      <h3 id="p1t">Agendes caòtiques</h3>
+      <p id="p1">Activitats, cites, aniversaris... tot repartit en mil llocs i ningú controla res.</p>
+    </div>
+    <div class="problem-card">
+      <div class="icon">💸</div>
+      <h3 id="p2t">Diners que s'esfumen</h3>
+      <p id="p2">Subscripcions oblidades, compres duplicades, despeses que ningú recorda haver fet.</p>
+    </div>
+    <div class="problem-card">
+      <div class="icon">⏰</div>
+      <h3 id="p3t">Temps perdut</h3>
+      <p id="p3">Hores coordinant, buscant informació i fent llistes que mai estan al dia.</p>
+    </div>
+    <div class="problem-card">
+      <div class="icon">🧠</div>
+      <h3 id="p4t">Sobrecàrrega mental</h3>
+      <p id="p4">La sensació constant que t'oblides d'alguna cosa important.</p>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<!-- SOLUTION -->
+<div class="solution-bg">
+  <div class="solution-inner">
+    <h2 id="solution-title">Com t'ajudem</h2>
+    <div class="solution-grid">
+      <div class="solution-item">
+        <div class="dot">📉</div>
+        <div>
+          <h3 id="s1t">Detecta on perds diners</h3>
+          <p id="s1">Puja el teu extracte i et mostrem exactament on gastes de més, sense judici.</p>
+        </div>
+      </div>
+      <div class="solution-item">
+        <div class="dot">✅</div>
+        <div>
+          <h3 id="s2t">Centralitza la logística</h3>
+          <p id="s2">Activitats, recordatoris i coordinació familiar en un sol lloc.</p>
+        </div>
+      </div>
+      <div class="solution-item">
+        <div class="dot">💡</div>
+        <div>
+          <h3 id="s3t">Consells reals i pràctics</h3>
+          <p id="s3">Trucs aplicables des d'avui per estalviar temps i diners a casa.</p>
+        </div>
+      </div>
+      <div class="solution-item">
+        <div class="dot">📊</div>
+        <div>
+          <h3 id="s4t">Resum setmanal familiar</h3>
+          <p id="s4">Un cop a la setmana, una foto clara de com va la teva família. Sense tecnicismes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SOCIAL PROOF -->
+<div class="social">
+  <div class="avatars">
+    <div class="avatar a1">MA</div>
+    <div class="avatar a2">JR</div>
+    <div class="avatar a3">LP</div>
+    <div class="avatar a4">CS</div>
+  </div>
+  <p id="social-text">+47 famílies ja s'han apuntat a la llista d'espera</p>
+</div>
+
+<hr />
+
+<!-- CTA BOTTOM -->
+<div class="cta-bottom">
+  <h2 id="cta-title">Forma part dels primers</h2>
+  <p id="cta-sub">Accés gratuït al MVP per a les 100 primeres famílies. Sense targeta de crèdit.</p>
+  <div class="form-row">
+    <input type="email" id="email-2" placeholder="El teu email" />
+    <button class="btn-main" id="cta-2" onclick="handleSubmit('email-2','success-2')">Apunta'm</button>
+  </div>
+  <div class="success-msg" id="success-2">✓ Apuntat! Et contactarem aviat.</div>
+  <p class="form-note" id="note-2">Sense spam. Accés gratuït al MVP per als primers 100.</p>
+</div>
+
+<footer>
+  <p id="footer-text">© 2025 FamOS · Fet amb ❤️ per a famílies</p>
+</footer>
+
+<script>
+const t = {
+  ca: {
+    badge: "Aviat disponible",
+    h1: 'La teva família mereix <span style="color:#0F6E56">més temps i menys preocupacions</span>',
+    sub: "Una eina per a qualsevol tipus de família que vulgui organitzar-se millor, saber on van els diners i guanyar temps cada dia.",
+    cta1: "Vull accés anticipat", cta2: "Apunta'm",
+    note: "Sense spam. Accés gratuït al MVP per als primers 100.",
+    success: "✓ Apuntat! Et contactarem aviat.",
+    problemsTitle: "Li passa a moltes famílies",
+    p1t: "Agendes caòtiques", p1: "Activitats, cites, aniversaris... tot repartit en mil llocs i ningú controla res.",
+    p2t: "Diners que s'esfumen", p2: "Subscripcions oblidades, compres duplicades, despeses que ningú recorda haver fet.",
+    p3t: "Temps perdut", p3: "Hores coordinant, buscant informació i fent llistes que mai estan al dia.",
+    p4t: "Sobrecàrrega mental", p4: "La sensació constant que t'oblides d'alguna cosa important.",
+    solutionTitle: "Com t'ajudem",
+    s1t: "Detecta on perds diners", s1: "Puja el teu extracte i et mostrem exactament on gastes de més, sense judici.",
+    s2t: "Centralitza la logística", s2: "Activitats, recordatoris i coordinació familiar en un sol lloc.",
+    s3t: "Consells reals i pràctics", s3: "Trucs aplicables des d'avui per estalviar temps i diners a casa.",
+    s4t: "Resum setmanal familiar", s4: "Un cop a la setmana, una foto clara de com va la teva família. Sense tecnicismes.",
+    social: "+47 famílies ja s'han apuntat a la llista d'espera",
+    ctaTitle: "Forma part dels primers",
+    ctaSub: "Accés gratuït al MVP per a les 100 primeres famílies. Sense targeta de crèdit.",
+    emailPh: "El teu email",
+    footer: "© 2025 FamOS · Fet amb ❤️ per a famílies"
+  },
+  es: {
+    badge: "Próximamente",
+    h1: 'Tu familia merece <span style="color:#0F6E56">más tiempo y menos preocupaciones</span>',
+    sub: "Una herramienta para cualquier tipo de familia que quiera organizarse mejor, saber dónde va el dinero y ganar tiempo cada día.",
+    cta1: "Quiero acceso anticipado", cta2: "Apúntame",
+    note: "Sin spam. Acceso gratuito al MVP para los primeros 100.",
+    success: "✓ ¡Apuntado! Te contactaremos pronto.",
+    problemsTitle: "Le pasa a muchas familias",
+    p1t: "Agendas caóticas", p1: "Actividades, citas, cumpleaños... todo repartido en mil sitios y nadie controla nada.",
+    p2t: "Dinero que desaparece", p2: "Suscripciones olvidadas, compras duplicadas, gastos que nadie recuerda haber hecho.",
+    p3t: "Tiempo perdido", p3: "Horas coordinando, buscando información y haciendo listas que nunca están al día.",
+    p4t: "Sobrecarga mental", p4: "La sensación constante de que te olvidas de algo importante.",
+    solutionTitle: "Cómo te ayudamos",
+    s1t: "Detecta dónde pierdes dinero", s1: "Sube tu extracto y te mostramos exactamente dónde gastas de más, sin juicios.",
+    s2t: "Centraliza la logística", s2: "Actividades, recordatorios y coordinación familiar en un solo lugar.",
+    s3t: "Consejos reales y prácticos", s3: "Trucos aplicables desde hoy para ahorrar tiempo y dinero en casa.",
+    s4t: "Resumen semanal familiar", s4: "Una vez a la semana, una foto clara de cómo va tu familia. Sin tecnicismos.",
+    social: "+47 familias ya se han apuntado a la lista de espera",
+    ctaTitle: "Sé de los primeros",
+    ctaSub: "Acceso gratuito al MVP para las 100 primeras familias. Sin tarjeta de crédito.",
+    emailPh: "Tu email",
+    footer: "© 2025 FamOS · Hecho con ❤️ para familias"
+  }
+};
+
+function setLang(l) {
+  const c = t[l];
+  document.getElementById('btn-ca').classList.toggle('active', l === 'ca');
+  document.getElementById('btn-es').classList.toggle('active', l === 'es');
+  document.getElementById('badge').textContent = c.badge;
+  document.getElementById('h1').innerHTML = c.h1;
+  document.getElementById('sub').textContent = c.sub;
+  document.getElementById('cta-1').textContent = c.cta1;
+  document.getElementById('cta-2').textContent = c.cta2;
+  document.getElementById('note-1').textContent = c.note;
+  document.getElementById('note-2').textContent = c.note;
+  document.getElementById('problems-title').textContent = c.problemsTitle;
+  ['p1t','p2t','p3t','p4t'].forEach(id => document.getElementById(id).textContent = c[id]);
+  ['p1','p2','p3','p4'].forEach(id => document.getElementById(id).textContent = c[id]);
+  document.getElementById('solution-title').textContent = c.solutionTitle;
+  ['s1t','s2t','s3t','s4t'].forEach(id => document.getElementById(id).textContent = c[id]);
+  ['s1','s2','s3','s4'].forEach(id => document.getElementById(id).textContent = c[id]);
+  document.getElementById('social-text').textContent = c.social;
+  document.getElementById('cta-title').textContent = c.ctaTitle;
+  document.getElementById('cta-sub').textContent = c.ctaSub;
+  document.getElementById('footer-text').textContent = c.footer;
+  document.querySelectorAll('input[type=email]').forEach(i => i.placeholder = c.emailPh);
+  document.querySelectorAll('.success-msg').forEach(el => el.textContent = c.success);
+}
+
+function handleSubmit(inputId, successId) {
+  const email = document.getElementById(inputId).value;
+  if (!email || !email.includes('@')) {
+    document.getElementById(inputId).focus();
+    return;
+  }
+  document.getElementById(successId).style.display = 'block';
+  document.getElementById(inputId).value = '';
+}
+</script>
+</body>
+</html>
