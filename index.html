@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ca">
 <head>
@@ -9,14 +10,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --green-dark: #085041;
       --green-mid: #0F6E56;
       --green-light: #E1F5EE;
       --amber-light: #FAEEDA;
       --amber-dark: #854F0B;
-      --amber-darker: #633806;
       --text-primary: #1a1a1a;
       --text-secondary: #555;
       --text-tertiary: #888;
@@ -26,229 +25,59 @@
       --radius-md: 8px;
       --radius-lg: 12px;
     }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      color: var(--text-primary);
-      background: var(--bg-primary);
-      line-height: 1.7;
-    }
-
-    /* NAV */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      border-bottom: 1px solid var(--border);
-      max-width: 860px;
-      margin: 0 auto;
-    }
+    body { font-family: 'Inter', sans-serif; font-size: 16px; color: var(--text-primary); background: var(--bg-primary); line-height: 1.7; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; border-bottom: 1px solid var(--border); max-width: 860px; margin: 0 auto; }
     .logo { font-size: 1.1rem; font-weight: 500; color: var(--green-mid); }
     .lang-toggle { display: flex; gap: 6px; }
-    .lang-btn {
-      font-size: 12px;
-      padding: 4px 12px;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      background: transparent;
-      color: var(--text-secondary);
-      cursor: pointer;
-      font-family: inherit;
-    }
-    .lang-btn.active {
-      background: var(--bg-secondary);
-      color: var(--text-primary);
-      border-color: #aaa;
-      font-weight: 500;
-    }
-
-    /* LAYOUT */
-    .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
-
-    /* HERO */
+    .lang-btn { font-size: 12px; padding: 4px 12px; border: 1px solid var(--border); border-radius: 20px; background: transparent; color: var(--text-secondary); cursor: pointer; font-family: inherit; }
+    .lang-btn.active { background: var(--bg-secondary); color: var(--text-primary); border-color: #aaa; font-weight: 500; }
     .hero { text-align: center; padding: 4rem 2rem 3rem; max-width: 860px; margin: 0 auto; }
-    .badge {
-      display: inline-block;
-      background: var(--amber-light);
-      color: var(--amber-dark);
-      font-size: 12px;
-      padding: 4px 14px;
-      border-radius: 20px;
-      margin-bottom: 1.25rem;
-      font-weight: 500;
-    }
-    .hero h1 {
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
-      font-weight: 500;
-      line-height: 1.25;
-      margin-bottom: 1rem;
-      max-width: 580px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    .badge { display: inline-block; background: var(--amber-light); color: var(--amber-dark); font-size: 12px; padding: 4px 14px; border-radius: 20px; margin-bottom: 1.25rem; font-weight: 500; }
+    .hero h1 { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 500; line-height: 1.25; margin-bottom: 1rem; max-width: 580px; margin-left: auto; margin-right: auto; }
     .hero h1 span { color: var(--green-mid); }
-    .hero p {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      max-width: 480px;
-      margin: 0 auto 2rem;
-    }
-
-    /* FORM */
-    .form-row {
-      display: flex;
-      gap: 10px;
-      max-width: 420px;
-      margin: 0 auto 0.75rem;
-    }
-    .form-row input {
-      flex: 1;
-      padding: 11px 16px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      font-size: 14px;
-      font-family: inherit;
-      color: var(--text-primary);
-      background: var(--bg-primary);
-      outline: none;
-    }
-    .form-row input:focus { border-color: var(--green-mid); }
-    .btn-main {
-      background: var(--green-mid);
-      color: var(--green-light);
-      border: none;
-      padding: 11px 20px;
-      border-radius: var(--radius-md);
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      white-space: nowrap;
-      font-family: inherit;
-      transition: background 0.15s;
-    }
+    .hero p { font-size: 1rem; color: var(--text-secondary); max-width: 480px; margin: 0 auto 2rem; }
+    .form-row { display: flex; gap: 10px; max-width: 420px; margin: 0 auto 0.75rem; }
+    .form-row input[type="email"] { flex: 1; padding: 11px 16px; border: 1px solid var(--border); border-radius: var(--radius-md); font-size: 14px; font-family: inherit; color: var(--text-primary); background: var(--bg-primary); outline: none; }
+    .form-row input[type="email"]:focus { border-color: var(--green-mid); }
+    .btn-main { background: var(--green-mid); color: var(--green-light); border: none; padding: 11px 20px; border-radius: var(--radius-md); font-size: 14px; font-weight: 500; cursor: pointer; white-space: nowrap; font-family: inherit; transition: background 0.15s; }
     .btn-main:hover { background: var(--green-dark); }
+    .btn-main:disabled { opacity: 0.6; cursor: not-allowed; }
     .form-note { font-size: 12px; color: var(--text-tertiary); text-align: center; }
-
-    /* DIVIDER */
+    .success-msg { display: none; background: var(--green-light); color: var(--green-dark); border-radius: var(--radius-md); padding: 10px 16px; font-size: 13px; font-weight: 500; max-width: 420px; margin: 0.5rem auto 0; text-align: center; }
+    .error-msg { display: none; background: #FCEBEB; color: #A32D2D; border-radius: var(--radius-md); padding: 10px 16px; font-size: 13px; max-width: 420px; margin: 0.5rem auto 0; text-align: center; }
     hr { border: none; border-top: 1px solid var(--border); margin: 0; }
-
-    /* PROBLEMS */
     .section { padding: 3rem 2rem; max-width: 860px; margin: 0 auto; }
-    .section h2 {
-      font-size: 1.2rem;
-      font-weight: 500;
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    .problem-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 14px;
-    }
-    .problem-card {
-      background: var(--bg-secondary);
-      border-radius: var(--radius-lg);
-      padding: 1.25rem;
-    }
+    .section h2 { font-size: 1.2rem; font-weight: 500; text-align: center; margin-bottom: 2rem; }
+    .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+    .problem-card { background: var(--bg-secondary); border-radius: var(--radius-lg); padding: 1.25rem; }
     .problem-card .icon { font-size: 1.5rem; margin-bottom: 10px; }
     .problem-card h3 { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
     .problem-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.55; }
-
-    /* SOLUTION */
-    .solution-bg {
-      background: var(--bg-secondary);
-      padding: 3rem 2rem;
-    }
+    .solution-bg { background: var(--bg-secondary); padding: 3rem 2rem; }
     .solution-inner { max-width: 860px; margin: 0 auto; }
-    .solution-inner h2 {
-      font-size: 1.2rem;
-      font-weight: 500;
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    .solution-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-    }
+    .solution-inner h2 { font-size: 1.2rem; font-weight: 500; text-align: center; margin-bottom: 2rem; }
+    .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
     .solution-item { display: flex; gap: 12px; align-items: flex-start; }
-    .dot {
-      width: 32px;
-      height: 32px;
-      min-width: 32px;
-      border-radius: 50%;
-      background: var(--green-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-    }
+    .dot { width: 32px; height: 32px; min-width: 32px; border-radius: 50%; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 1rem; }
     .solution-item h3 { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
     .solution-item p { font-size: 13px; color: var(--text-secondary); line-height: 1.55; }
-
-    /* SOCIAL PROOF */
     .social { text-align: center; padding: 2.5rem 2rem; max-width: 860px; margin: 0 auto; }
     .avatars { display: flex; justify-content: center; margin-bottom: 0.75rem; }
-    .avatar {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: 500;
-      border: 2px solid var(--bg-primary);
-      margin-left: -8px;
-    }
+    .avatar { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; border: 2px solid var(--bg-primary); margin-left: -8px; }
     .avatar:first-child { margin-left: 0; }
     .a1 { background: var(--amber-light); color: var(--amber-dark); }
     .a2 { background: var(--green-light); color: var(--green-dark); }
     .a3 { background: #EEEDFE; color: #3C3489; }
     .a4 { background: #FBEAF0; color: #72243E; }
     .social p { font-size: 13px; color: var(--text-tertiary); }
-
-    /* CTA BOTTOM */
-    .cta-bottom {
-      text-align: center;
-      padding: 3rem 2rem;
-      border-top: 1px solid var(--border);
-      max-width: 860px;
-      margin: 0 auto;
-    }
+    .cta-bottom { text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border); max-width: 860px; margin: 0 auto; }
     .cta-bottom h2 { font-size: 1.2rem; font-weight: 500; margin-bottom: 0.5rem; }
     .cta-bottom p { font-size: 14px; color: var(--text-secondary); margin-bottom: 1.5rem; }
-
-    /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 1.5rem 2rem;
-      font-size: 12px;
-      color: var(--text-tertiary);
-      border-top: 1px solid var(--border);
-    }
-
-    /* MOBILE */
+    footer { text-align: center; padding: 1.5rem 2rem; font-size: 12px; color: var(--text-tertiary); border-top: 1px solid var(--border); }
     @media (max-width: 540px) {
       .form-row { flex-direction: column; }
       .btn-main { width: 100%; }
       nav { padding: 1rem; }
-    }
-
-    /* SUCCESS */
-    .success-msg {
-      display: none;
-      background: var(--green-light);
-      color: var(--green-dark);
-      border-radius: var(--radius-md);
-      padding: 10px 16px;
-      font-size: 13px;
-      font-weight: 500;
-      max-width: 420px;
-      margin: 0.5rem auto 0;
-      text-align: center;
     }
   </style>
 </head>
@@ -262,88 +91,45 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="badge" id="badge">Aviat disponible</div>
   <h1 id="h1">La teva família mereix <span>més temps i menys preocupacions</span></h1>
   <p id="sub">Una eina per a qualsevol tipus de família que vulgui organitzar-se millor, saber on van els diners i guanyar temps cada dia.</p>
-  <iframe width="100%" height="60"
-  src="https://c143dac2.sibforms.com/serve/MUIFAE-Z-gaL9I8pXvMVPJFAge1PbtL1eU0rTeSNq9Eo5-urZKZ02fTdkMheS7ajOQ_ElCzTJwwoHHw-Iw4a9HX-mCqJdHynSXShZv0PE0n68gZaNapZpYtdkD5bEU5j9sWcDOGzdFsZ1z2SWUucVGOW7f42FwJfZWkU0e6-Bml6nYHr64kWch-7BD6D5sIaGTQGPVa0Gt2MBwFdTA=="
-  frameborder="0" scrolling="auto">
-</iframe>
-  <div class="success-msg" id="success-1">✓ Apuntat! Et contactarem aviat.</div>
+  <div class="form-row">
+    <input type="email" id="email-1" placeholder="El teu email" />
+    <button class="btn-main" id="cta-1" onclick="handleSubmit('email-1','success-1','error-1','cta-1')">Vull accés anticipat</button>
+  </div>
+  <div class="success-msg" id="success-1"></div>
+  <div class="error-msg" id="error-1"></div>
   <p class="form-note" id="note-1">Sense spam. Accés gratuït al MVP per als primers 100.</p>
 </div>
 
 <hr />
 
-<!-- PROBLEMS -->
 <div class="section">
   <h2 id="problems-title">Li passa a moltes famílies</h2>
   <div class="problem-grid">
-    <div class="problem-card">
-      <div class="icon">📅</div>
-      <h3 id="p1t">Agendes caòtiques</h3>
-      <p id="p1">Activitats, cites, aniversaris... tot repartit en mil llocs i ningú controla res.</p>
-    </div>
-    <div class="problem-card">
-      <div class="icon">💸</div>
-      <h3 id="p2t">Diners que s'esfumen</h3>
-      <p id="p2">Subscripcions oblidades, compres duplicades, despeses que ningú recorda haver fet.</p>
-    </div>
-    <div class="problem-card">
-      <div class="icon">⏰</div>
-      <h3 id="p3t">Temps perdut</h3>
-      <p id="p3">Hores coordinant, buscant informació i fent llistes que mai estan al dia.</p>
-    </div>
-    <div class="problem-card">
-      <div class="icon">🧠</div>
-      <h3 id="p4t">Sobrecàrrega mental</h3>
-      <p id="p4">La sensació constant que t'oblides d'alguna cosa important.</p>
-    </div>
+    <div class="problem-card"><div class="icon">📅</div><h3 id="p1t">Agendes caòtiques</h3><p id="p1">Activitats, cites, aniversaris... tot repartit en mil llocs i ningú controla res.</p></div>
+    <div class="problem-card"><div class="icon">💸</div><h3 id="p2t">Diners que s'esfumen</h3><p id="p2">Subscripcions oblidades, compres duplicades, despeses que ningú recorda haver fet.</p></div>
+    <div class="problem-card"><div class="icon">⏰</div><h3 id="p3t">Temps perdut</h3><p id="p3">Hores coordinant, buscant informació i fent llistes que mai estan al dia.</p></div>
+    <div class="problem-card"><div class="icon">🧠</div><h3 id="p4t">Sobrecàrrega mental</h3><p id="p4">La sensació constant que t'oblides d'alguna cosa important.</p></div>
   </div>
 </div>
 
 <hr />
 
-<!-- SOLUTION -->
 <div class="solution-bg">
   <div class="solution-inner">
     <h2 id="solution-title">Com t'ajudem</h2>
     <div class="solution-grid">
-      <div class="solution-item">
-        <div class="dot">📉</div>
-        <div>
-          <h3 id="s1t">Detecta on perds diners</h3>
-          <p id="s1">Puja el teu extracte i et mostrem exactament on gastes de més, sense judici.</p>
-        </div>
-      </div>
-      <div class="solution-item">
-        <div class="dot">✅</div>
-        <div>
-          <h3 id="s2t">Centralitza la logística</h3>
-          <p id="s2">Activitats, recordatoris i coordinació familiar en un sol lloc.</p>
-        </div>
-      </div>
-      <div class="solution-item">
-        <div class="dot">💡</div>
-        <div>
-          <h3 id="s3t">Consells reals i pràctics</h3>
-          <p id="s3">Trucs aplicables des d'avui per estalviar temps i diners a casa.</p>
-        </div>
-      </div>
-      <div class="solution-item">
-        <div class="dot">📊</div>
-        <div>
-          <h3 id="s4t">Resum setmanal familiar</h3>
-          <p id="s4">Un cop a la setmana, una foto clara de com va la teva família. Sense tecnicismes.</p>
-        </div>
-      </div>
+      <div class="solution-item"><div class="dot">📉</div><div><h3 id="s1t">Detecta on perds diners</h3><p id="s1">Puja el teu extracte i et mostrem exactament on gastes de més, sense judici.</p></div></div>
+      <div class="solution-item"><div class="dot">✅</div><div><h3 id="s2t">Centralitza la logística</h3><p id="s2">Activitats, recordatoris i coordinació familiar en un sol lloc.</p></div></div>
+      <div class="solution-item"><div class="dot">💡</div><div><h3 id="s3t">Consells reals i pràctics</h3><p id="s3">Trucs aplicables des d'avui per estalviar temps i diners a casa.</p></div></div>
+      <div class="solution-item"><div class="dot">📊</div><div><h3 id="s4t">Resum setmanal familiar</h3><p id="s4">Un cop a la setmana, una foto clara de com va la teva família. Sense tecnicismes.</p></div></div>
     </div>
   </div>
 </div>
 
-<!-- SOCIAL PROOF -->
 <div class="social">
   <div class="avatars">
     <div class="avatar a1">MA</div>
@@ -356,15 +142,15 @@
 
 <hr />
 
-<!-- CTA BOTTOM -->
 <div class="cta-bottom">
   <h2 id="cta-title">Forma part dels primers</h2>
   <p id="cta-sub">Accés gratuït al MVP per a les 100 primeres famílies. Sense targeta de crèdit.</p>
   <div class="form-row">
     <input type="email" id="email-2" placeholder="El teu email" />
-    <button class="btn-main" id="cta-2" onclick="handleSubmit('email-2','success-2')">Apunta'm</button>
+    <button class="btn-main" id="cta-2" onclick="handleSubmit('email-2','success-2','error-2','cta-2')">Apunta'm</button>
   </div>
-  <div class="success-msg" id="success-2">✓ Apuntat! Et contactarem aviat.</div>
+  <div class="success-msg" id="success-2"></div>
+  <div class="error-msg" id="error-2"></div>
   <p class="form-note" id="note-2">Sense spam. Accés gratuït al MVP per als primers 100.</p>
 </div>
 
@@ -373,6 +159,8 @@
 </footer>
 
 <script>
+const BREVO_LIST_ID = 3;
+
 const t = {
   ca: {
     badge: "Aviat disponible",
@@ -380,7 +168,9 @@ const t = {
     sub: "Una eina per a qualsevol tipus de família que vulgui organitzar-se millor, saber on van els diners i guanyar temps cada dia.",
     cta1: "Vull accés anticipat", cta2: "Apunta'm",
     note: "Sense spam. Accés gratuït al MVP per als primers 100.",
-    success: "✓ Apuntat! Et contactarem aviat.",
+    success: "✓ Apuntat! Aviat rebràs un email de confirmació.",
+    error: "Alguna cosa ha anat malament. Torna-ho a intentar.",
+    emailPh: "El teu email",
     problemsTitle: "Li passa a moltes famílies",
     p1t: "Agendes caòtiques", p1: "Activitats, cites, aniversaris... tot repartit en mil llocs i ningú controla res.",
     p2t: "Diners que s'esfumen", p2: "Subscripcions oblidades, compres duplicades, despeses que ningú recorda haver fet.",
@@ -394,7 +184,6 @@ const t = {
     social: "+47 famílies ja s'han apuntat a la llista d'espera",
     ctaTitle: "Forma part dels primers",
     ctaSub: "Accés gratuït al MVP per a les 100 primeres famílies. Sense targeta de crèdit.",
-    emailPh: "El teu email",
     footer: "© 2025 FamOS · Fet amb ❤️ per a famílies"
   },
   es: {
@@ -403,7 +192,9 @@ const t = {
     sub: "Una herramienta para cualquier tipo de familia que quiera organizarse mejor, saber dónde va el dinero y ganar tiempo cada día.",
     cta1: "Quiero acceso anticipado", cta2: "Apúntame",
     note: "Sin spam. Acceso gratuito al MVP para los primeros 100.",
-    success: "✓ ¡Apuntado! Te contactaremos pronto.",
+    success: "✓ ¡Apuntado! Pronto recibirás un email de confirmación.",
+    error: "Algo ha ido mal. Inténtalo de nuevo.",
+    emailPh: "Tu email",
     problemsTitle: "Le pasa a muchas familias",
     p1t: "Agendas caóticas", p1: "Actividades, citas, cumpleaños... todo repartido en mil sitios y nadie controla nada.",
     p2t: "Dinero que desaparece", p2: "Suscripciones olvidadas, compras duplicadas, gastos que nadie recuerda haber hecho.",
@@ -417,12 +208,14 @@ const t = {
     social: "+47 familias ya se han apuntado a la lista de espera",
     ctaTitle: "Sé de los primeros",
     ctaSub: "Acceso gratuito al MVP para las 100 primeras familias. Sin tarjeta de crédito.",
-    emailPh: "Tu email",
     footer: "© 2025 FamOS · Hecho con ❤️ para familias"
   }
 };
 
+let lang = 'ca';
+
 function setLang(l) {
+  lang = l;
   const c = t[l];
   document.getElementById('btn-ca').classList.toggle('active', l === 'ca');
   document.getElementById('btn-es').classList.toggle('active', l === 'es');
@@ -444,17 +237,53 @@ function setLang(l) {
   document.getElementById('cta-sub').textContent = c.ctaSub;
   document.getElementById('footer-text').textContent = c.footer;
   document.querySelectorAll('input[type=email]').forEach(i => i.placeholder = c.emailPh);
-  document.querySelectorAll('.success-msg').forEach(el => el.textContent = c.success);
 }
 
-function handleSubmit(inputId, successId) {
-  const email = document.getElementById(inputId).value;
+async function handleSubmit(inputId, successId, errorId, btnId) {
+  const email = document.getElementById(inputId).value.trim();
+  const btn = document.getElementById(btnId);
+  const successEl = document.getElementById(successId);
+  const errorEl = document.getElementById(errorId);
+  const c = t[lang];
+
   if (!email || !email.includes('@')) {
     document.getElementById(inputId).focus();
     return;
   }
-  document.getElementById(successId).style.display = 'block';
-  document.getElementById(inputId).value = '';
+
+  btn.disabled = true;
+  btn.textContent = '...';
+  successEl.style.display = 'none';
+  errorEl.style.display = 'none';
+
+  try {
+    const res = await fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': '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'
+      },
+      body: JSON.stringify({
+        email: email,
+        listIds: [BREVO_LIST_ID],
+        updateEnabled: true
+      })
+    });
+
+    if (res.ok || res.status === 204) {
+      successEl.textContent = c.success;
+      successEl.style.display = 'block';
+      document.getElementById(inputId).value = '';
+    } else {
+      throw new Error('Error ' + res.status);
+    }
+  } catch (err) {
+    errorEl.textContent = c.error;
+    errorEl.style.display = 'block';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = inputId === 'email-1' ? c.cta1 : c.cta2;
+  }
 }
 </script>
 </body>
